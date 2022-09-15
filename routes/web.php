@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', function () {
+    return view('home');
+});
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('home', [
-            'products' => Product::all()
+    Route::get('/auth/index', function () {
+        return view('auth.index', [
+            'orders' => Order::all()
         ]);
     });
-
-    Route::resource('orders', OrderController::class)->names('orders');
 });
+
+Route::resource('orders', OrderController::class)->names('orders');

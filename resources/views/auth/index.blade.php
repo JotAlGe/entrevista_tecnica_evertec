@@ -13,15 +13,37 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
         </script>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-
     </head>
 
     <body>
+        {{-- nav --}}
+        @include('partials.nav')
 
-        <h1 class="text-center">Generar una nueva orden</h1>
-        <a href="{{ route('orders.create')}}">Generar una nueva orden</a>
+        <h1 class="display-4 text-center">Ordenes</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($orders as $order)
+                <tr>
+                    <th scope="row">{{ $order->id}}</th>
+                    <td>{{ $order->customer_name}}</td>
+                    <td>{{ $order->customer_email}}</td>
+                    <td>{{ $order->customer_mobile}}</td>
+                </tr>
+
+                @empty
+                <h2>No hay ordenes</h2>
+                @endforelse
+
+            </tbody>
+        </table>
     </body>
 
 </html>

@@ -9,15 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['customer_name', 'customer_email', 'customer_mobile'];
+
     // status
     public function status()
     {
         return $this->belongsTo(Status::class)->withDefault();
-    }
-
-    //product
-    public function product()
-    {
-        return $this->belongsTo(Product::class)->withDefault();
     }
 }

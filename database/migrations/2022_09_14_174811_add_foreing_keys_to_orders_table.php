@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->after('id', function ($table) {
-                $table->foreignId('product_id')->nullable()->constrained();
+            $table->after('customer_mobile', function ($table) {
                 $table->foreignId('status_id')->nullable()->constrained();
             });
         });
