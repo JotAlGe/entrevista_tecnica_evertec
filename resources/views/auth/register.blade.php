@@ -1,23 +1,3 @@
-{{-- <form action="{{ route('register') }}" method="post">
-@csrf
-<label>
-    Name:
-    <input type="text" name="name">
-</label>
-<label>
-    Email:
-    <input type="email" name="email">
-</label>
-<label>
-    Password:
-    <input type="password" name="password">
-</label>
-<label>
-    Password Confirmation:
-    <input type="password" name="password_confirmation">
-</label>
-<input type="submit" value="Register">
-</form> --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,6 +52,17 @@
                                             <input class="form-control form-control-lg" type="email"
                                                 value="{{ old('email')}}" name="email" placeholder="Ingresa tu correo">
                                             @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        {{-- cellphone --}}
+                                        <div class="form-group">
+                                            <label>Celular:</label>
+                                            <input class="form-control form-control-lg" type="tel"
+                                                value="{{ old('cell')}}" name="cell"
+                                                placeholder="Ingresa número de celular...">
+                                            @error('cell')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
