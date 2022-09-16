@@ -9,7 +9,13 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_name', 'customer_email', 'customer_mobile'];
+    protected $fillable = [
+        'customer_name',
+        'customer_email',
+        'customer_mobile',
+        'process_url',
+        'request_id'
+    ];
 
     // status
     public function status()

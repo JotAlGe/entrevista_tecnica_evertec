@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('customer_email');
             $table->string('customer_mobile');
+            $table->string('process_url')->nullable();
+            $table->string('request_id')->nullable();
+
 
             $table->timestamps();
         });

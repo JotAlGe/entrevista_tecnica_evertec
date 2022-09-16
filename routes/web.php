@@ -27,4 +27,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::resource('orders', OrderController::class)->names('orders');
+Route::resource('orders', OrderController::class)
+    ->names('orders')
+    ->except(['edit', 'update', 'destroy']);

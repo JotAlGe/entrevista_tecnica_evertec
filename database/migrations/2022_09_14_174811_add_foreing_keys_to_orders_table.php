@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->after('customer_mobile', function ($table) {
-                $table->foreignId('status_id')->nullable()->constrained();
+                $table->foreignId('status_id')->default(1)->constrained();
             });
         });
     }
