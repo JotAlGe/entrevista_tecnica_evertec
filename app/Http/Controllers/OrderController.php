@@ -82,15 +82,15 @@ class OrderController extends Controller
             'ipAddress' => '127.0.0.1',
             'userAgent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
         ]);
-        return $response->json();
-        //if ($response->successful()) {
-        //    $newOrder->request_id = $response->requestId;
-        //    $newOrder->process_url = $response->processUrl;
-        //    $newOrder->save();
-        //    return redirect($response->processUrl());
-        //} else {
-        //    return redirect()->route('orders.create')->with('warning', 'Error al enviar la solicitud');
-        //}
+
+        if ($response->successful()) {
+            $newOrder->request_id = $response->requestId;
+            $newOrder->process_url = $response->processUrl;
+            $newOrder->save();
+            return redirect($response->processUrl());
+        } else {
+            return redirect()->route('orders.create')->with('warning', 'Error al enviar la solicitud');
+        }
     }
 
 
